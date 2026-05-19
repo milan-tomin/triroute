@@ -304,7 +304,7 @@ const API_BASE = window.location.hostname === 'localhost'
   ? 'http://localhost:3000/api/strava'
   : '/api/strava';
 
-const CLIENT_ID = '246549'; // Replace with your Strava Client ID
+const CLIENT_ID = 246549; // Replace with your Strava Client ID
 const REDIRECT_URI = window.location.origin + '/';
 
 // ---- AUTH ----
@@ -326,7 +326,7 @@ async function handleOAuthCallback() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         client_id: CLIENT_ID,
-        client_secret: '201508f1b0c4fd07cdb346e598933197c41949ea', // Move to server env var in production
+        client_secret: 201508f1b0c4fd07cdb346e598933197c41949ea, // Move to server env var in production
         code,
         grant_type: 'authorization_code'
       })
