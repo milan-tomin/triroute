@@ -1,5 +1,5 @@
 {
   "rewrites": [
-    { "source": "/api/strava/:path*", "destination": "/api/strava?path=:path*" }
+    { "source": "/api/strava/(.*)", "destination": "/api/strava?path=$1" }
   ]
 }
