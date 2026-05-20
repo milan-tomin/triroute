@@ -214,7 +214,7 @@
       <div class="auth-title">TriRoute</div>
       <p class="auth-sub">Strava training intelligence — weekly summaries, flat road finder, and GPX race matching.</p>
     </div>
-    <a id="strava-auth-btn" class="btn-strava" href="#">
+    <a id="strava-auth-btn" class="btn-strava" href="#" onclick="doAuth(); return false;">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7 13.828h4.169"/></svg>
       Connect with Strava
     </a>
@@ -345,6 +345,11 @@ async function handleOAuthCallback() {
   return false;
 }
 
+function doAuth() {
+  const url = `https://www.strava.com/oauth/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&approval_prompt=auto&scope=read,activity:read_all`;
+  window.location.href = url;
+}
+        
 async function initApp() {
   // Check for OAuth callback
   if (window.location.search.includes('code=')) {
