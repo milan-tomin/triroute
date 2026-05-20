@@ -21,114 +21,45 @@
     --run: #f953c6;
     --text: #e8edf5;
     --muted: #5a6a82;
-    --success: #2ecc71;
-    --danger: #e74c3c;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-
   html, body { height: 100%; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  body::before {
-    content: '';
-    position: fixed; inset: 0;
-    background-image:
-      linear-gradient(rgba(0,198,255,0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,198,255,0.025) 1px, transparent 1px);
-    background-size: 44px 44px;
-    pointer-events: none; z-index: 0;
-  }
-
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; min-height: 100vh; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(0,198,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(0,198,255,0.025) 1px, transparent 1px); background-size: 44px 44px; pointer-events: none; z-index: 0; }
   .app { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 24px 16px 80px; }
-
-  /* ---- Header ---- */
   .header { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
-  .logo {
-    width: 46px; height: 46px; border-radius: 12px;
-    background: linear-gradient(135deg, var(--swim) 0%, var(--bike) 50%, var(--run) 100%);
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: #000; flex-shrink: 0;
-  }
+  .logo { width: 46px; height: 46px; border-radius: 12px; background: linear-gradient(135deg, var(--swim) 0%, var(--bike) 50%, var(--run) 100%); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: #000; flex-shrink: 0; }
   .header h1 { font-family: 'Bebas Neue', sans-serif; font-size: 30px; letter-spacing: 2px; line-height: 1; }
   .header p { color: var(--muted); font-size: 12px; margin-top: 1px; }
   .header-right { margin-left: auto; }
-
-  /* ---- Auth ---- */
-  #auth-screen {
-    display: flex; align-items: center; justify-content: center;
-    min-height: 70vh; flex-direction: column; text-align: center; gap: 24px;
-  }
+  #auth-screen { display: flex; align-items: center; justify-content: center; min-height: 70vh; flex-direction: column; text-align: center; gap: 24px; }
   .auth-logo { width: 80px; height: 80px; border-radius: 20px; background: linear-gradient(135deg, var(--swim), var(--bike), var(--run)); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: #000; margin: 0 auto; }
   .auth-title { font-family: 'Bebas Neue', sans-serif; font-size: 48px; letter-spacing: 3px; }
   .auth-sub { color: var(--muted); font-size: 15px; max-width: 320px; line-height: 1.5; }
-  .btn-strava {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: #fc4c02; color: white; border: none; border-radius: 10px;
-    padding: 14px 28px; font-family: 'DM Sans', sans-serif; font-weight: 500;
-    font-size: 15px; cursor: pointer; text-decoration: none; transition: opacity 0.2s;
-  }
+  .btn-strava { display: inline-flex; align-items: center; gap: 10px; background: #fc4c02; color: white; border: none; border-radius: 10px; padding: 14px 28px; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 15px; cursor: pointer; text-decoration: none; transition: opacity 0.2s; }
   .btn-strava:hover { opacity: 0.88; }
   .btn-strava svg { width: 20px; height: 20px; fill: white; }
-
-  /* ---- Tabs ---- */
-  .tabs {
-    display: flex; gap: 3px; margin-bottom: 20px;
-    background: var(--surface); border-radius: 12px; padding: 3px;
-    border: 1px solid var(--border);
-  }
-  .tab {
-    flex: 1; padding: 9px 6px; border: none; background: transparent;
-    color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 13px;
-    font-weight: 500; border-radius: 9px; cursor: pointer; transition: all 0.18s;
-    display: flex; align-items: center; justify-content: center; gap: 5px;
-  }
+  .tabs { display: flex; gap: 3px; margin-bottom: 20px; background: var(--surface); border-radius: 12px; padding: 3px; border: 1px solid var(--border); }
+  .tab { flex: 1; padding: 9px 6px; border: none; background: transparent; color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; border-radius: 9px; cursor: pointer; transition: all 0.18s; display: flex; align-items: center; justify-content: center; gap: 5px; }
   .tab:hover { color: var(--text); }
   .tab.active { background: var(--surface2); color: var(--text); }
   .tab-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-
-  /* ---- Panels ---- */
   .panel { display: none; }
   .panel.active { display: block; }
-
-  /* ---- Cards ---- */
   .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; margin-bottom: 14px; }
   .card-title { font-family: 'Bebas Neue', sans-serif; font-size: 17px; letter-spacing: 1px; margin-bottom: 2px; }
   .card-sub { color: var(--muted); font-size: 12px; margin-bottom: 14px; line-height: 1.4; }
-
-  /* ---- Buttons ---- */
-  .btn {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: linear-gradient(135deg, var(--swim), #0072ff);
-    color: #000; border: none; border-radius: 8px;
-    padding: 9px 18px; font-family: 'DM Sans', sans-serif;
-    font-weight: 500; font-size: 13px; cursor: pointer; transition: opacity 0.18s;
-  }
+  .btn { display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(135deg, var(--swim), #0072ff); color: #000; border: none; border-radius: 8px; padding: 9px 18px; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 13px; cursor: pointer; transition: opacity 0.18s; }
   .btn:hover { opacity: 0.85; }
-  .btn:disabled { opacity: 0.35; cursor: not-allowed; }
   .btn-bike { background: linear-gradient(135deg, var(--bike), #f7971e); }
   .btn-run { background: linear-gradient(135deg, var(--run), #b91d73); }
-  .btn-ghost {
-    background: transparent; color: var(--muted); border: 1px solid var(--border);
-    font-size: 12px; padding: 6px 12px;
-  }
-  .btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
-
-  /* ---- Metrics ---- */
+  .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); font-size: 12px; padding: 6px 12px; }
+  .btn-ghost:hover { color: var(--text); }
   .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; margin-bottom: 14px; }
   .metric { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; }
   .metric-label { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
   .metric-val { font-family: 'Bebas Neue', sans-serif; font-size: 22px; line-height: 1; }
   .metric-unit { font-size: 10px; color: var(--muted); }
-
-  /* ---- Week rows ---- */
   .week-row { display: grid; grid-template-columns: 85px 1fr 65px 55px; gap: 8px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
   .week-row:last-child { border-bottom: none; }
   .week-date { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); }
@@ -136,66 +67,41 @@
   .bar-bg { flex: 1; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
   .bar-fill { height: 100%; border-radius: 2px; background: var(--swim); }
   .bar-km { font-size: 12px; color: var(--text); white-space: nowrap; min-width: 44px; }
-
-  /* ---- Activity list ---- */
   .act { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); }
   .act:last-child { border-bottom: none; }
   .act-icon { width: 30px; height: 30px; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
   .act-name { font-size: 13px; font-weight: 500; margin-bottom: 1px; }
   .act-meta { font-size: 10px; color: var(--muted); font-family: 'DM Mono', monospace; }
   .act-stat { margin-left: auto; text-align: right; font-family: 'DM Mono', monospace; font-size: 12px; flex-shrink: 0; }
-
-  /* ---- Flat items ---- */
   .flat-item { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
   .flat-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
   .flat-name { font-size: 13px; font-weight: 500; }
   .badge { font-size: 10px; padding: 2px 8px; border-radius: 4px; font-family: 'DM Mono', monospace; background: rgba(0,198,255,0.15); color: var(--swim); }
   .flat-meta { font-size: 11px; color: var(--muted); font-family: 'DM Mono', monospace; display: flex; gap: 14px; flex-wrap: wrap; }
-
-  /* ---- Upload ---- */
-  .upload {
-    border: 2px dashed var(--border); border-radius: 12px; padding: 32px;
-    text-align: center; cursor: pointer; transition: border-color 0.18s; margin-bottom: 14px;
-  }
+  .upload { border: 2px dashed var(--border); border-radius: 12px; padding: 32px; text-align: center; cursor: pointer; transition: border-color 0.18s; margin-bottom: 14px; }
   .upload:hover { border-color: var(--swim); }
   .upload.over { border-color: var(--swim); background: rgba(0,198,255,0.04); }
   .upload-icon { font-size: 32px; margin-bottom: 8px; }
   .upload-text { color: var(--muted); font-size: 13px; }
-
-  /* ---- Segment results ---- */
   .seg { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 11px 14px; margin-bottom: 8px; }
   .seg-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
   .seg-name { font-size: 13px; font-weight: 500; }
   .seg-score { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--swim); }
   .seg-meta { font-size: 11px; color: var(--muted); font-family: 'DM Mono', monospace; display: flex; gap: 14px; flex-wrap: wrap; }
-
-  /* ---- Form ---- */
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
   .form-group label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 4px; }
-  .form-group input, .form-group select {
-    width: 100%; background: var(--bg); border: 1px solid var(--border);
-    border-radius: 8px; padding: 8px 10px; color: var(--text);
-    font-family: 'DM Sans', sans-serif; font-size: 13px; outline: none;
-  }
+  .form-group input { width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 13px; outline: none; }
   .form-group input:focus { border-color: rgba(0,198,255,0.5); }
-
-  /* ---- Loading / Error ---- */
   .loading { text-align: center; padding: 36px 0; color: var(--muted); font-size: 13px; }
   .spinner { width: 26px; height: 26px; border: 2px solid var(--border); border-top-color: var(--swim); border-radius: 50%; animation: spin 0.7s linear infinite; margin: 0 auto 10px; }
   @keyframes spin { to { transform: rotate(360deg); } }
   .error-box { color: #ff6b6b; font-size: 13px; padding: 10px 14px; background: rgba(255,107,107,0.1); border-radius: 8px; }
-
   canvas { width: 100%; border-radius: 8px; display: block; margin-bottom: 12px; }
-
   a { color: var(--swim); }
-  a:hover { opacity: 0.8; }
-
-  /* ---- Athlete bar ---- */
   .athlete-bar { display: flex; align-items: center; gap: 10px; }
   .athlete-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border); }
   .athlete-name { font-size: 13px; font-weight: 500; }
   .athlete-city { font-size: 11px; color: var(--muted); }
-
   @media (max-width: 540px) {
     .week-row { grid-template-columns: 70px 1fr 50px; }
     .week-elev { display: none; }
@@ -207,47 +113,32 @@
 <body>
 <div class="app">
 
-  <!-- AUTH SCREEN -->
   <div id="auth-screen">
     <div class="auth-logo">TR</div>
     <div>
       <div class="auth-title">TriRoute</div>
       <p class="auth-sub">Strava training intelligence — weekly summaries, flat road finder, and GPX race matching.</p>
     </div>
-    <a id="strava-auth-btn" class="btn-strava" href="#" onclick="doAuth(); return false;">
+    <button class="btn-strava" onclick="doAuth()">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7 13.828h4.169"/></svg>
       Connect with Strava
-    </a>
+    </button>
     <p style="font-size:11px;color:var(--muted);">Your data stays on your device. We only read activity data.</p>
   </div>
 
-  <!-- MAIN APP (hidden until authed) -->
   <div id="main-app" style="display:none;">
-
     <div class="header">
       <div class="logo">TR</div>
-      <div>
-        <h1>TriRoute</h1>
-        <p>Strava Training Tools</p>
-      </div>
-      <div class="header-right">
-        <div class="athlete-bar" id="athlete-bar"></div>
-      </div>
+      <div><h1>TriRoute</h1><p>Strava Training Tools</p></div>
+      <div class="header-right"><div class="athlete-bar" id="athlete-bar"></div></div>
     </div>
 
     <div class="tabs">
-      <button class="tab active" onclick="switchTab('weekly',this)">
-        <span class="tab-dot" style="background:var(--swim)"></span><span>Weekly</span>
-      </button>
-      <button class="tab" onclick="switchTab('flat',this)">
-        <span class="tab-dot" style="background:var(--bike)"></span><span>Flat Finder</span>
-      </button>
-      <button class="tab" onclick="switchTab('gpx',this)">
-        <span class="tab-dot" style="background:var(--run)"></span><span>GPX Match</span>
-      </button>
+      <button class="tab active" onclick="switchTab('weekly',this)"><span class="tab-dot" style="background:var(--swim)"></span><span>Weekly</span></button>
+      <button class="tab" onclick="switchTab('flat',this)"><span class="tab-dot" style="background:var(--bike)"></span><span>Flat Finder</span></button>
+      <button class="tab" onclick="switchTab('gpx',this)"><span class="tab-dot" style="background:var(--run)"></span><span>GPX Match</span></button>
     </div>
 
-    <!-- WEEKLY -->
     <div class="panel active" id="panel-weekly">
       <div class="card">
         <div class="card-title">Weekly Training Summary</div>
@@ -257,11 +148,10 @@
       <div id="weekly-out"></div>
     </div>
 
-    <!-- FLAT FINDER -->
     <div class="panel" id="panel-flat">
       <div class="card">
         <div class="card-title">Flat Road Finder</div>
-        <div class="card-sub">Scans your past rides and finds the longest, flattest sections — great for TT or race prep</div>
+        <div class="card-sub">Scans your past rides for the longest, flattest sections</div>
         <div class="form-row">
           <div class="form-group"><label>Min distance (km)</label><input type="number" id="flatDist" value="2" min="0.5" step="0.5"/></div>
           <div class="form-group"><label>Max gradient (%)</label><input type="number" id="flatGrad" value="1.5" min="0" step="0.5"/></div>
@@ -271,7 +161,6 @@
       <div id="flat-out"></div>
     </div>
 
-    <!-- GPX MATCHER -->
     <div class="panel" id="panel-gpx">
       <div class="card">
         <div class="card-title">GPX Race Matcher</div>
@@ -293,47 +182,38 @@
       </div>
       <div id="gpx-out"></div>
     </div>
-
-  </div><!-- /main-app -->
+  </div>
 </div>
 
 <script>
-// ---- CONFIG ----
-// Replace with your actual Vercel deployment URL after deploying
-const API_BASE = window.location.hostname === 'localhost'
-  ? 'http://localhost:3000/api/strava'
-  : '/api/strava';
-
-const CLIENT_ID = 246549; // Replace with your Strava Client ID
+const CLIENT_ID = '246549';
+const CLIENT_SECRET = '201508f1b0c4fd07cdb346e598933197c41949ea';
 const REDIRECT_URI = window.location.origin + '/';
+const API_BASE = '/api/strava';
 
-// ---- AUTH ----
+function doAuth() {
+  const url = 'https://www.strava.com/oauth/authorize'
+    + '?client_id=' + CLIENT_ID
+    + '&response_type=code'
+    + '&redirect_uri=' + encodeURIComponent(REDIRECT_URI)
+    + '&approval_prompt=auto'
+    + '&scope=read,activity:read_all';
+  window.location.href = url;
+}
+
 function getToken() { return localStorage.getItem('strava_token'); }
 function getAthlete() { try { return JSON.parse(localStorage.getItem('strava_athlete')); } catch(e){ return null; } }
-
-document.getElementById('strava-auth-btn').href =
-  `https://www.strava.com/oauth/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&approval_prompt=auto&scope=read,activity:read_all`;
 
 async function handleOAuthCallback() {
   const params = new URLSearchParams(window.location.search);
   const code = params.get('code');
   if (!code) return false;
-
-  // Exchange code for token via our proxy
   try {
-    const res = await fetch(`${API_BASE}/oauth/token`, {
+    const res = await fetch('https://www.strava.com/oauth/token', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        client_id: CLIENT_ID,
-        client_secret: '201508f1b0c4fd07cdb346e598933197c41949ea', // Move to server env var in production
-        code,
-        grant_type: 'authorization_code'
-      })
+      body: JSON.stringify({ client_id: CLIENT_ID, client_secret: CLIENT_SECRET, code: code, grant_type: 'authorization_code' })
     });
-    // Note: token exchange should ideally be done server-side.
-    // For simplicity here we do client-side but store only the access token.
-    // For a proper app, move client_secret to a Vercel env variable.
     const data = await res.json();
     if (data.access_token) {
       localStorage.setItem('strava_token', data.access_token);
@@ -345,21 +225,11 @@ async function handleOAuthCallback() {
   return false;
 }
 
-function doAuth() {
-  const url = `https://www.strava.com/oauth/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&approval_prompt=auto&scope=read,activity:read_all`;
-  window.location.href = url;
-}
-        
 async function initApp() {
-  // Check for OAuth callback
   if (window.location.search.includes('code=')) {
     await handleOAuthCallback();
   }
-
-  const token = getToken();
-  if (token) {
-    showApp();
-  }
+  if (getToken()) showApp();
 }
 
 function showApp() {
@@ -367,11 +237,11 @@ function showApp() {
   document.getElementById('main-app').style.display = 'block';
   const athlete = getAthlete();
   if (athlete) {
-    document.getElementById('athlete-bar').innerHTML = `
-      <img class="athlete-avatar" src="${athlete.profile_medium}" alt="${athlete.firstname}" onerror="this.style.display='none'"/>
-      <div><div class="athlete-name">${athlete.firstname} ${athlete.lastname}</div><div class="athlete-city">${athlete.city || ''}</div></div>
-      <button class="btn btn-ghost" onclick="logout()" style="margin-left:8px">Sign out</button>
-    `;
+    document.getElementById('athlete-bar').innerHTML =
+      '<img class="athlete-avatar" src="' + athlete.profile_medium + '" onerror="this.style.display=\'none\'"/>'
+      + '<div><div class="athlete-name">' + athlete.firstname + ' ' + athlete.lastname + '</div>'
+      + '<div class="athlete-city">' + (athlete.city || '') + '</div></div>'
+      + '<button class="btn btn-ghost" onclick="logout()" style="margin-left:8px">Sign out</button>';
   }
   loadWeekly();
 }
@@ -382,17 +252,14 @@ function logout() {
   location.reload();
 }
 
-// ---- API HELPER ----
-async function stravaFetch(path, params = {}) {
+async function stravaFetch(path, params) {
   const token = getToken();
-  const qs = new URLSearchParams(params).toString();
-  const url = `${API_BASE}/${path}${qs ? '?' + qs : ''}`;
-  const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+  const qs = params ? '?' + new URLSearchParams(params).toString() : '';
+  const res = await fetch(API_BASE + '/' + path + qs, { headers: { Authorization: 'Bearer ' + token } });
   if (!res.ok) throw new Error('Strava API error ' + res.status);
   return res.json();
 }
 
-// ---- TAB SWITCHING ----
 function switchTab(name, el) {
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
@@ -400,20 +267,14 @@ function switchTab(name, el) {
   document.getElementById('panel-' + name).classList.add('active');
 }
 
-// ---- WEEKLY SUMMARY ----
 async function loadWeekly() {
   const el = document.getElementById('weekly-out');
   el.innerHTML = '<div class="loading"><div class="spinner"></div>Loading your activities...</div>';
   try {
     const after = Math.floor((Date.now() - 65 * 24 * 3600 * 1000) / 1000);
-    const acts = await stravaFetch('athlete/activities', { per_page: 100, after });
+    const acts = await stravaFetch('athlete/activities', { per_page: 100, after: after });
+    if (!acts.length) { el.innerHTML = '<div class="card"><div class="card-sub">No activities in the last 65 days.</div></div>'; return; }
 
-    if (!acts.length) {
-      el.innerHTML = '<div class="card"><div class="card-sub">No activities in the last 65 days.</div></div>';
-      return;
-    }
-
-    // Group by week (Monday start)
     const weeks = {};
     acts.forEach(a => {
       const d = new Date(a.start_date);
@@ -421,39 +282,33 @@ async function loadWeekly() {
       mon.setDate(d.getDate() - ((d.getDay() + 6) % 7));
       const k = mon.toISOString().slice(0, 10);
       if (!weeks[k]) weeks[k] = { dist: 0, elev: 0, time: 0, count: 0 };
-      weeks[k].dist += a.distance;
-      weeks[k].elev += a.total_elevation_gain;
-      weeks[k].time += a.moving_time;
-      weeks[k].count++;
+      weeks[k].dist += a.distance; weeks[k].elev += a.total_elevation_gain;
+      weeks[k].time += a.moving_time; weeks[k].count++;
     });
 
-    const totDist = acts.reduce((s, a) => s + a.distance, 0);
-    const totElev = acts.reduce((s, a) => s + a.total_elevation_gain, 0);
-    const totTime = acts.reduce((s, a) => s + a.moving_time, 0);
+    const totDist = acts.reduce((s,a) => s+a.distance, 0);
+    const totElev = acts.reduce((s,a) => s+a.total_elevation_gain, 0);
+    const totTime = acts.reduce((s,a) => s+a.moving_time, 0);
     const maxD = Math.max(...Object.values(weeks).map(w => w.dist));
     const keys = Object.keys(weeks).sort().reverse().slice(0, 8);
 
-    let h = `<div class="card">
-      <div class="metrics">
-        <div class="metric"><div class="metric-label">Distance</div><div class="metric-val" style="color:var(--swim)">${(totDist / 1000).toFixed(0)}<span class="metric-unit"> km</span></div></div>
-        <div class="metric"><div class="metric-label">Elevation</div><div class="metric-val" style="color:var(--bike)">${Math.round(totElev)}<span class="metric-unit"> m</span></div></div>
-        <div class="metric"><div class="metric-label">Time</div><div class="metric-val" style="color:var(--run)">${Math.floor(totTime / 3600)}<span class="metric-unit"> hrs</span></div></div>
-        <div class="metric"><div class="metric-label">Activities</div><div class="metric-val">${acts.length}</div></div>
-      </div>
-    </div>`;
+    let h = '<div class="card"><div class="metrics">'
+      + '<div class="metric"><div class="metric-label">Distance</div><div class="metric-val" style="color:var(--swim)">' + (totDist/1000).toFixed(0) + '<span class="metric-unit"> km</span></div></div>'
+      + '<div class="metric"><div class="metric-label">Elevation</div><div class="metric-val" style="color:var(--bike)">' + Math.round(totElev) + '<span class="metric-unit"> m</span></div></div>'
+      + '<div class="metric"><div class="metric-label">Time</div><div class="metric-val" style="color:var(--run)">' + Math.floor(totTime/3600) + '<span class="metric-unit"> hrs</span></div></div>'
+      + '<div class="metric"><div class="metric-label">Activities</div><div class="metric-val">' + acts.length + '</div></div>'
+      + '</div></div>';
 
     h += '<div class="card"><div class="card-title">By week</div><div class="card-sub">Last 8 weeks</div>';
     keys.forEach(k => {
       const w = weeks[k];
-      const km = (w.dist / 1000).toFixed(1);
-      const pct = Math.round(w.dist / maxD * 100);
+      const km = (w.dist/1000).toFixed(1);
+      const pct = Math.round(w.dist/maxD*100);
       const date = new Date(k).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
-      h += `<div class="week-row">
-        <div class="week-date">${date}</div>
-        <div class="bar-wrap"><div class="bar-bg"><div class="bar-fill" style="width:${pct}%"></div></div><span class="bar-km">${km} km</span></div>
-        <div class="week-elev" style="font-size:11px;color:var(--muted);text-align:right">${Math.round(w.elev)}m</div>
-        <div style="font-size:11px;color:var(--muted);text-align:right">${w.count} rides</div>
-      </div>`;
+      h += '<div class="week-row"><div class="week-date">' + date + '</div>'
+        + '<div class="bar-wrap"><div class="bar-bg"><div class="bar-fill" style="width:' + pct + '%"></div></div><span class="bar-km">' + km + ' km</span></div>'
+        + '<div class="week-elev" style="font-size:11px;color:var(--muted);text-align:right">' + Math.round(w.elev) + 'm</div>'
+        + '<div style="font-size:11px;color:var(--muted);text-align:right">' + w.count + ' rides</div></div>';
     });
     h += '</div>';
 
@@ -463,218 +318,145 @@ async function loadWeekly() {
       const colors = { Ride: 'var(--bike)', Run: 'var(--run)', Swim: 'var(--swim)' };
       const icon = icons[a.type] || '⚡';
       const col = colors[a.type] || 'var(--muted)';
-      const km = (a.distance / 1000).toFixed(1);
-      const mins = Math.round(a.moving_time / 60);
+      const km = (a.distance/1000).toFixed(1);
+      const mins = Math.round(a.moving_time/60);
       const date = new Date(a.start_date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
-      h += `<div class="act">
-        <div class="act-icon" style="background:${col}22">${icon}</div>
-        <div>
-          <div class="act-name">${a.name}</div>
-          <div class="act-meta">${date} · ${Math.round(a.total_elevation_gain)}m elev</div>
-        </div>
-        <div class="act-stat">${km} km<br><span style="color:var(--muted)">${mins}min</span></div>
-      </div>`;
+      h += '<div class="act"><div class="act-icon" style="background:' + col + '22">' + icon + '</div>'
+        + '<div><div class="act-name">' + a.name + '</div><div class="act-meta">' + date + ' · ' + Math.round(a.total_elevation_gain) + 'm elev</div></div>'
+        + '<div class="act-stat">' + km + ' km<br><span style="color:var(--muted)">' + mins + 'min</span></div></div>';
     });
     h += '</div>';
     el.innerHTML = h;
-  } catch (e) {
-    el.innerHTML = `<div class="card"><div class="error-box">${e.message}</div></div>`;
-  }
+  } catch(e) { el.innerHTML = '<div class="card"><div class="error-box">' + e.message + '</div></div>'; }
 }
 
-// ---- FLAT FINDER ----
 async function loadFlat() {
   const el = document.getElementById('flat-out');
   const minD = parseFloat(document.getElementById('flatDist').value) * 1000;
   const maxG = parseFloat(document.getElementById('flatGrad').value) / 100;
-  el.innerHTML = '<div class="loading"><div class="spinner"></div>Scanning your rides for flat sections...</div>';
+  el.innerHTML = '<div class="loading"><div class="spinner"></div>Scanning your rides...</div>';
   try {
-    const after = Math.floor((Date.now() - 180 * 24 * 3600 * 1000) / 1000);
-    const acts = await stravaFetch('athlete/activities', { per_page: 30, after });
+    const after = Math.floor((Date.now() - 180*24*3600*1000) / 1000);
+    const acts = await stravaFetch('athlete/activities', { per_page: 30, after: after });
     const rides = acts.filter(a => a.type === 'Ride' && a.distance > 10000);
-
-    if (!rides.length) {
-      el.innerHTML = '<div class="card"><div class="card-sub">No rides found in the last 6 months.</div></div>';
-      return;
-    }
+    if (!rides.length) { el.innerHTML = '<div class="card"><div class="card-sub">No rides found.</div></div>'; return; }
 
     const flat = [];
     for (const ride of rides.slice(0, 10)) {
       try {
-        const s = await stravaFetch(`activities/${ride.id}/streams`, { keys: 'distance,altitude,latlng', key_by_type: true });
+        const s = await stravaFetch('activities/' + ride.id + '/streams', { keys: 'distance,altitude,latlng', key_by_type: true });
         if (!s.distance || !s.altitude) continue;
         const dist = s.distance.data, alt = s.altitude.data, ll = s.latlng ? s.latlng.data : null;
         let i = 0;
         while (i < dist.length - 1) {
           let j = i + 1;
           while (j < dist.length) {
-            const sd = dist[j] - dist[i], se = Math.abs(alt[j] - alt[i]);
-            if ((sd > 0 && se / sd > maxG) || sd > minD * 6) break;
+            const sd = dist[j]-dist[i], se = Math.abs(alt[j]-alt[i]);
+            if ((sd > 0 && se/sd > maxG) || sd > minD*6) break;
             j++;
           }
-          const sd = dist[j - 1] - dist[i];
+          const sd = dist[j-1] - dist[i];
           if (sd >= minD) {
-            const se = Math.abs(alt[j - 1] - alt[i]);
-            const g = sd > 0 ? (se / sd * 100) : 0;
-            const mid = Math.floor((i + j) / 2);
-            flat.push({ name: ride.name, id: ride.id, dist: sd, grad: g, loc: ll ? `${ll[mid][0].toFixed(4)}, ${ll[mid][1].toFixed(4)}` : 'N/A' });
+            const se = Math.abs(alt[j-1]-alt[i]);
+            const g = sd > 0 ? (se/sd*100) : 0;
+            const mid = Math.floor((i+j)/2);
+            flat.push({ name: ride.name, id: ride.id, dist: sd, grad: g, loc: ll ? ll[mid][0].toFixed(4)+', '+ll[mid][1].toFixed(4) : 'N/A' });
             i = j;
           } else i++;
         }
-      } catch (e) { }
+      } catch(e) {}
     }
 
-    flat.sort((a, b) => b.dist - a.dist);
+    flat.sort((a,b) => b.dist - a.dist);
+    if (!flat.length) { el.innerHTML = '<div class="card"><div class="card-sub">No flat sections found. Try relaxing the criteria.</div></div>'; return; }
 
-    if (!flat.length) {
-      el.innerHTML = '<div class="card"><div class="card-sub">No flat sections found with those criteria. Try increasing max gradient or lowering min distance.</div></div>';
-      return;
-    }
-
-    let h = `<div class="card"><div class="card-title">${flat.length} flat sections found</div><div class="card-sub">From your last 10 rides, sorted by length</div>`;
+    let h = '<div class="card"><div class="card-title">' + flat.length + ' flat sections found</div><div class="card-sub">Sorted by length</div>';
     flat.slice(0, 15).forEach(s => {
-      h += `<div class="flat-item">
-        <div class="flat-head"><span class="flat-name">${s.name}</span><span class="badge">${(s.dist / 1000).toFixed(2)} km</span></div>
-        <div class="flat-meta">
-          <span>${s.grad.toFixed(2)}% gradient</span>
-          <span>📍 ${s.loc}</span>
-          <span><a href="https://www.strava.com/activities/${s.id}" target="_blank">View on Strava ↗</a></span>
-        </div>
-      </div>`;
+      h += '<div class="flat-item"><div class="flat-head"><span class="flat-name">' + s.name + '</span><span class="badge">' + (s.dist/1000).toFixed(2) + ' km</span></div>'
+        + '<div class="flat-meta"><span>' + s.grad.toFixed(2) + '% gradient</span><span>📍 ' + s.loc + '</span>'
+        + '<span><a href="https://www.strava.com/activities/' + s.id + '" target="_blank">View on Strava ↗</a></span></div></div>';
     });
     h += '</div>';
     el.innerHTML = h;
-  } catch (e) {
-    el.innerHTML = `<div class="card"><div class="error-box">${e.message}</div></div>`;
-  }
+  } catch(e) { el.innerHTML = '<div class="card"><div class="error-box">' + e.message + '</div></div>'; }
 }
 
-// ---- GPX MATCHER ----
 function haversine(a, b) {
-  const R = 6371000, dLa = (b.lat - a.lat) * Math.PI / 180, dLo = (b.lon - a.lon) * Math.PI / 180;
-  const x = Math.sin(dLa / 2) ** 2 + Math.cos(a.lat * Math.PI / 180) * Math.cos(b.lat * Math.PI / 180) * Math.sin(dLo / 2) ** 2;
-  return R * 2 * Math.atan2(Math.sqrt(x), Math.sqrt(1 - x));
+  const R=6371000, dLa=(b.lat-a.lat)*Math.PI/180, dLo=(b.lon-a.lon)*Math.PI/180;
+  const x=Math.sin(dLa/2)**2+Math.cos(a.lat*Math.PI/180)*Math.cos(b.lat*Math.PI/180)*Math.sin(dLo/2)**2;
+  return R*2*Math.atan2(Math.sqrt(x),Math.sqrt(1-x));
 }
 
 function handleGpx(input) {
-  const f = input.files[0];
-  if (!f) return;
-  const r = new FileReader();
-  r.onload = e => parseGpx(e.target.result, f.name);
-  r.readAsText(f);
+  const f = input.files[0]; if (!f) return;
+  const r = new FileReader(); r.onload = e => parseGpx(e.target.result, f.name); r.readAsText(f);
 }
 
 const ua = document.getElementById('uploadArea');
 ua.addEventListener('dragover', e => { e.preventDefault(); ua.classList.add('over'); });
 ua.addEventListener('dragleave', () => ua.classList.remove('over'));
-ua.addEventListener('drop', e => {
-  e.preventDefault(); ua.classList.remove('over');
-  const f = e.dataTransfer.files[0];
-  if (f) { const r = new FileReader(); r.onload = ev => parseGpx(ev.target.result, f.name); r.readAsText(f); }
-});
+ua.addEventListener('drop', e => { e.preventDefault(); ua.classList.remove('over'); const f=e.dataTransfer.files[0]; if(f){const r=new FileReader();r.onload=ev=>parseGpx(ev.target.result,f.name);r.readAsText(f);} });
 
 let gpxData = null;
 
 function parseGpx(text, name) {
   const xml = new DOMParser().parseFromString(text, 'application/xml');
-  const pts = [...xml.querySelectorAll('trkpt')].map(p => ({
-    lat: +p.getAttribute('lat'), lon: +p.getAttribute('lon'),
-    ele: +(p.querySelector('ele')?.textContent || 0)
-  }));
-  if (!pts.length) { alert('No track points found in GPX.'); return; }
-
-  let d = 0;
-  const dists = [0];
-  for (let i = 1; i < pts.length; i++) { d += haversine(pts[i - 1], pts[i]); dists.push(d); }
-
-  let asc = 0, desc = 0, maxE = -Infinity, minE = Infinity;
-  for (let i = 1; i < pts.length; i++) {
-    const diff = pts[i].ele - pts[i - 1].ele;
-    diff > 0 ? asc += diff : desc += Math.abs(diff);
-    maxE = Math.max(maxE, pts[i].ele); minE = Math.min(minE, pts[i].ele);
-  }
-
-  gpxData = {
-    pts, dists, dist: d, asc, desc, maxE, minE,
-    cLat: (Math.min(...pts.map(p => p.lat)) + Math.max(...pts.map(p => p.lat))) / 2,
-    cLon: (Math.min(...pts.map(p => p.lon)) + Math.max(...pts.map(p => p.lon))) / 2
-  };
-
-  const cv = document.getElementById('elevChart');
-  cv.style.display = 'block';
-  const dpr = window.devicePixelRatio || 1;
-  cv.width = (cv.offsetWidth || 600) * dpr;
-  cv.height = 110 * dpr;
-  const ctx = cv.getContext('2d');
-  ctx.scale(dpr, dpr);
-  const W = cv.width / dpr, H = 110;
-  const eles = pts.map(p => p.ele), mn = Math.min(...eles), mx = Math.max(...eles), rng = mx - mn || 1;
+  const pts = [...xml.querySelectorAll('trkpt')].map(p => ({ lat:+p.getAttribute('lat'), lon:+p.getAttribute('lon'), ele:+(p.querySelector('ele')?.textContent||0) }));
+  if (!pts.length) { alert('No track points found.'); return; }
+  let d=0; const dists=[0];
+  for (let i=1;i<pts.length;i++){d+=haversine(pts[i-1],pts[i]);dists.push(d);}
+  let asc=0,desc=0,maxE=-Infinity,minE=Infinity;
+  for (let i=1;i<pts.length;i++){const diff=pts[i].ele-pts[i-1].ele;diff>0?asc+=diff:desc+=Math.abs(diff);maxE=Math.max(maxE,pts[i].ele);minE=Math.min(minE,pts[i].ele);}
+  gpxData={pts,dists,dist:d,asc,desc,maxE,minE,cLat:(Math.min(...pts.map(p=>p.lat))+Math.max(...pts.map(p=>p.lat)))/2,cLon:(Math.min(...pts.map(p=>p.lon))+Math.max(...pts.map(p=>p.lon)))/2};
+  const cv=document.getElementById('elevChart');
+  cv.style.display='block';
+  const dpr=window.devicePixelRatio||1;
+  cv.width=(cv.offsetWidth||600)*dpr; cv.height=110*dpr;
+  const ctx=cv.getContext('2d'); ctx.scale(dpr,dpr);
+  const W=cv.width/dpr,H=110,eles=pts.map(p=>p.ele),mn=Math.min(...eles),mx=Math.max(...eles),rng=mx-mn||1;
   ctx.beginPath();
-  pts.forEach((p, i) => {
-    const x = dists[i] / d * W, y = H - 8 - (p.ele - mn) / rng * (H - 18);
-    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-  });
-  ctx.strokeStyle = '#00c6ff'; ctx.lineWidth = 2; ctx.stroke();
-  ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
-  ctx.fillStyle = 'rgba(0,198,255,0.1)'; ctx.fill();
-
-  document.getElementById('gpx-stats').innerHTML = `<div class="metrics" style="margin-top:10px;">
-    <div class="metric"><div class="metric-label">Distance</div><div class="metric-val" style="color:var(--swim)">${(d / 1000).toFixed(1)}<span class="metric-unit"> km</span></div></div>
-    <div class="metric"><div class="metric-label">Elevation gain</div><div class="metric-val" style="color:var(--bike)">${Math.round(asc)}<span class="metric-unit"> m</span></div></div>
-    <div class="metric"><div class="metric-label">Max elevation</div><div class="metric-val">${Math.round(maxE)}<span class="metric-unit"> m</span></div></div>
-    <div class="metric"><div class="metric-label">Elevation loss</div><div class="metric-val" style="color:var(--run)">${Math.round(desc)}<span class="metric-unit"> m</span></div></div>
-  </div>`;
-  document.getElementById('gpx-search').style.display = 'block';
-  document.getElementById('uploadText').textContent = '✓ ' + name + ' loaded';
+  pts.forEach((p,i)=>{const x=dists[i]/d*W,y=H-8-(p.ele-mn)/rng*(H-18);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
+  ctx.strokeStyle='#00c6ff';ctx.lineWidth=2;ctx.stroke();
+  ctx.lineTo(W,H);ctx.lineTo(0,H);ctx.closePath();ctx.fillStyle='rgba(0,198,255,0.1)';ctx.fill();
+  document.getElementById('gpx-stats').innerHTML='<div class="metrics" style="margin-top:10px;">'
+    +'<div class="metric"><div class="metric-label">Distance</div><div class="metric-val" style="color:var(--swim)">'+(d/1000).toFixed(1)+'<span class="metric-unit"> km</span></div></div>'
+    +'<div class="metric"><div class="metric-label">Elevation gain</div><div class="metric-val" style="color:var(--bike)">'+Math.round(asc)+'<span class="metric-unit"> m</span></div></div>'
+    +'<div class="metric"><div class="metric-label">Max elevation</div><div class="metric-val">'+Math.round(maxE)+'<span class="metric-unit"> m</span></div></div>'
+    +'<div class="metric"><div class="metric-label">Elevation loss</div><div class="metric-val" style="color:var(--run)">'+Math.round(desc)+'<span class="metric-unit"> m</span></div></div></div>';
+  document.getElementById('gpx-search').style.display='block';
+  document.getElementById('uploadText').textContent='✓ '+name+' loaded';
 }
 
 async function findSegments() {
   if (!gpxData) return;
-  const el = document.getElementById('gpx-out');
-  const rad = parseFloat(document.getElementById('radius').value) * 1000;
-  el.innerHTML = '<div class="loading"><div class="spinner"></div>Searching Strava segments...</div>';
+  const el=document.getElementById('gpx-out');
+  const rad=parseFloat(document.getElementById('radius').value)*1000;
+  el.innerHTML='<div class="loading"><div class="spinner"></div>Searching Strava segments...</div>';
   try {
-    const deg = rad / 111000;
-    const { cLat, cLon, dist, asc } = gpxData;
-    const data = await stravaFetch('segments/explore', {
-      bounds: `${cLat - deg},${cLon - deg},${cLat + deg},${cLon + deg}`,
-      activity_type: 'cycling'
+    const deg=rad/111000;
+    const{cLat,cLon,dist,asc}=gpxData;
+    const data=await stravaFetch('segments/explore',{bounds:`${cLat-deg},${cLon-deg},${cLat+deg},${cLon+deg}`,activity_type:'cycling'});
+    const segs=data.segments||[];
+    if(!segs.length){el.innerHTML='<div class="card"><div class="card-sub">No segments found. Try increasing the radius.</div></div>';return;}
+    const tGrad=asc/dist*100,tKm=dist/1000;
+    const scored=segs.map(s=>{
+      const km=s.distance/1000,g=s.avg_grade||0,ev=s.elev_difference||0;
+      const ds=100-Math.min(100,Math.abs(km-tKm)/tKm*100);
+      const gs=100-Math.min(100,Math.abs(g-tGrad)*10);
+      const es=100-Math.min(100,Math.abs(ev-asc)/(asc||1)*100);
+      return {...s,score:Math.round(ds*0.4+gs*0.35+es*0.25),km,g,ev};
+    }).sort((a,b)=>b.score-a.score);
+    let h='<div class="card"><div class="card-title">'+scored.length+' segments found</div><div class="card-sub">Ranked by similarity to your race ('+tKm.toFixed(1)+' km, '+Math.round(asc)+'m elev)</div>';
+    scored.slice(0,12).forEach(s=>{
+      h+='<div class="seg"><div class="seg-head"><span class="seg-name">'+s.name+'</span><span class="seg-score">'+s.score+'%</span></div>'
+        +'<div class="seg-meta"><span>'+s.km.toFixed(2)+' km</span><span>'+s.g.toFixed(1)+'% grade</span><span>'+Math.round(s.ev)+'m elev</span>'
+        +'<span><a href="https://www.strava.com/segments/'+s.id+'" target="_blank">View ↗</a></span></div></div>';
     });
-    const segs = data.segments || [];
-    if (!segs.length) {
-      el.innerHTML = '<div class="card"><div class="card-sub">No segments found. Try increasing the search radius.</div></div>';
-      return;
-    }
-
-    const tGrad = asc / dist * 100, tKm = dist / 1000;
-    const scored = segs.map(s => {
-      const km = s.distance / 1000, g = s.avg_grade || 0, ev = s.elev_difference || 0;
-      const ds = 100 - Math.min(100, Math.abs(km - tKm) / tKm * 100);
-      const gs = 100 - Math.min(100, Math.abs(g - tGrad) * 10);
-      const es = 100 - Math.min(100, Math.abs(ev - asc) / (asc || 1) * 100);
-      return { ...s, score: Math.round(ds * 0.4 + gs * 0.35 + es * 0.25), km, g, ev };
-    }).sort((a, b) => b.score - a.score);
-
-    let h = `<div class="card"><div class="card-title">${scored.length} segments found</div><div class="card-sub">Ranked by similarity to your race profile (${tKm.toFixed(1)} km, ${Math.round(asc)}m elev)</div>`;
-    scored.slice(0, 12).forEach(s => {
-      h += `<div class="seg">
-        <div class="seg-head"><span class="seg-name">${s.name}</span><span class="seg-score">${s.score}%</span></div>
-        <div class="seg-meta">
-          <span>${s.km.toFixed(2)} km</span>
-          <span>${s.g.toFixed(1)}% grade</span>
-          <span>${Math.round(s.ev)}m elev</span>
-          <span><a href="https://www.strava.com/segments/${s.id}" target="_blank">View ↗</a></span>
-        </div>
-      </div>`;
-    });
-    h += '</div>';
-    el.innerHTML = h;
-  } catch (e) {
-    el.innerHTML = `<div class="card"><div class="error-box">${e.message}</div></div>`;
-  }
+    h+='</div>';
+    el.innerHTML=h;
+  } catch(e){el.innerHTML='<div class="card"><div class="error-box">'+e.message+'</div></div>';}
 }
 
-// ---- INIT ----
 initApp();
 </script>
 </body>
